@@ -1,0 +1,13 @@
+/Robbery_Project
+    ├── data/
+    │   └── Robbery_Open_Data.csv
+    ├── models/
+    │   ├── robbery_model.pkl       <-- (Created by script 2)
+    │   └── model_columns.pkl       <-- (Created by script 2, CRITICAL for Flask)
+    ├── templates/
+    │   ├── index.html
+    │   └── result.html
+    ├── 1_preprocess.py             <-- (Refactored Comp309_group7.py)
+    ├── 2_train_model.py            <-- (Refactored data_modelling.py)
+    ├── app.py                      <-- (The Flask Application)
+    └── README.md
