@@ -13,6 +13,7 @@ This project analyzes Robbery Open Data to identify patterns and predicts the ty
 ## 🚀 How to Run
 1. **Install Dependencies**:
 pip install pandas numpy scikit-learn flask joblib
+py -m pip install pandas numpy scikit-learn flask joblib
 2. **Prepare Data**:
 Run the preprocessing script to clean the data.
 
