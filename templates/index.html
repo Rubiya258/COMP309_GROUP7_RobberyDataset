@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Robbery Prediction Group 7</title>
+    <title>Robbery Prediction</title>
     <style>
-        body { font-family: sans-serif; margin: 40px; }
-        input, select { padding: 10px; margin: 10px 0; width: 100%; }
-        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; }
+        body { font-family: sans-serif; background-color: #f4f4f4; text-align: center; padding: 50px; }
+        form { background: white; max-width: 400px; margin: auto; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px gray; }
+        input { width: 90%; padding: 10px; margin: 10px 0; }
+        button { width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #218838; }
     </style>
 </head>
 <body>
-    <h2>Group 7: Robbery Type Predictor</h2>
+    <h2>Robbery Type Predictor</h2>
+    <p>Enter details to predict the type of offence.</p>
     <form action="/predict" method="POST">
         
-        <label>Premise Type (e.g., Commercial, Outside, House):</label>
-        <input type="text" name="premisetype" placeholder="Commercial" required>
+        <label><strong>Premise Type:</strong></label>
+        <input type="text" name="premise_input" placeholder="e.g. Outside, Apartment, Commercial" required>
 
-        <label>Division (e.g., D14, D52):</label>
-        <input type="text" name="division" placeholder="D14" required>
+        <label><strong>Division:</strong></label>
+        <input type="text" name="division_input" placeholder="e.g. D14, D11, D52" required>
 
-        <label>Hour of Occurrence (0-23):</label>
-        <input type="number" name="occurrencehour" min="0" max="23" required>
+        <label><strong>Hour (0-23):</strong></label>
+        <input type="number" name="hour_input" min="0" max="23" placeholder="e.g. 22" required>
 
-        <button type="submit">Predict Offence Type</button>
+        <button type="submit">Predict</button>
     </form>
 </body>
 </html>

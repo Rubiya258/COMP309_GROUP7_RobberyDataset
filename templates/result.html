@@ -2,12 +2,19 @@
 <html>
 <head>
     <title>Prediction Result</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; }
+        .container { background: white; max-width: 400px; margin: auto; padding: 20px; border-radius: 10px; border: 2px solid #28a745; }
+        h1 { color: #28a745; }
+        a { text-decoration: none; color: blue; }
+    </style>
 </head>
 <body>
-    <h2>Prediction Result</h2>
-    <p>Based on the inputs, the predicted Offence Type is:</p>
-    <h1 style="color: blue;">{{ prediction }}</h1>
-    <br>
-    <a href="/">Back to Home</a>
+    <div class="container">
+        <h2>Predicted Offence Type:</h2>
+        <h1>{{ prediction }}</h1>
+        <br>
+        <a href="/">Try Again</a>
+    </div>
 </body>
 </html>
