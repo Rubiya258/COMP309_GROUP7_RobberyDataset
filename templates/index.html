@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Robbery Prediction Group 7</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; }
+        input, select { padding: 10px; margin: 10px 0; width: 100%; }
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <h2>Group 7: Robbery Type Predictor</h2>
+    <form action="/predict" method="POST">
+        
+        <label>Premise Type (e.g., Commercial, Outside, House):</label>
+        <input type="text" name="premisetype" placeholder="Commercial" required>
+
+        <label>Division (e.g., D14, D52):</label>
+        <input type="text" name="division" placeholder="D14" required>
+
+        <label>Hour of Occurrence (0-23):</label>
+        <input type="number" name="occurrencehour" min="0" max="23" required>
+
+        <button type="submit">Predict Offence Type</button>
+    </form>
+</body>
+</html>
