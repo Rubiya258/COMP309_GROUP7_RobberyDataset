@@ -225,24 +225,11 @@ features = ["PREMISES_TYPE", "DIVISION", "OCC_HOUR"]
 
 df_model = df[features + [target]].copy()
 
-# One-hot encode X
-X = pd.get_dummies(df_model[features], drop_first=True)
+from imblearn.over_sampling import RandomOverSampler
 
-# Encode y
-from sklearn.preprocessing import LabelEncoder
-le = LabelEncoder()
-y_encoded = le.fit_transform(df_model[target])
+ros = RandomOverSampler(random_state=42)
 
-# Remove NaN
-X = X.fillna(0)
-
-# FIX: Use k_neighbors=1
-from imblearn.over_sampling import SMOTE
-sm = SMOTE(k_neighbors=1, random_state=42)
-
-X_resampled, y_resampled = sm.fit_resample(X, y_encoded)
-
+X_resampled, y_resampled = ros.fit_resample(df_model[features], df_model[target])
 print("After balancing:")
 print(pd.Series(y_resampled).value_counts())
-
 
