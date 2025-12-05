@@ -200,3 +200,49 @@ plt.ylabel('Latitude')
 plt.tight_layout()
 plt.show()
 
+# --------------------------------------------
+# 5. DATA CLEANING + FEATURE SELECTION + BALANCING FOR MACHINE LEARNING
+# --------------------------------------------
+
+print("\nPREPARING DATA FOR MACHINE LEARNING")
+print("=" * 50)
+
+# Drop unnecessary columns
+drop_cols = ["OBJECTID", "EVENT_UNIQUE_ID", "REPORT_DATE", "OCC_DATE", "x", "y"]
+drop_cols = [c for c in drop_cols if c in df.columns]
+df = df.drop(columns=drop_cols)
+
+# Clean invalid coordinates (LAT/LONG = 0)
+if "LAT_WGS84" in df.columns and "LONG_WGS84" in df.columns:
+    before = df.shape[0]
+    df = df[(df["LAT_WGS84"] != 0) & (df["LONG_WGS84"] != 0)]
+    after = df.shape[0]
+    print(f"Removed {before - after} invalid coordinate rows")
+
+# Target & Features
+target = "OFFENCE"
+features = ["PREMISES_TYPE", "DIVISION", "OCC_HOUR"]
+
+df_model = df[features + [target]].copy()
+
+# One-hot encode X
+X = pd.get_dummies(df_model[features], drop_first=True)
+
+# Encode y
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+y_encoded = le.fit_transform(df_model[target])
+
+# Remove NaN
+X = X.fillna(0)
+
+# FIX: Use k_neighbors=1
+from imblearn.over_sampling import SMOTE
+sm = SMOTE(k_neighbors=1, random_state=42)
+
+X_resampled, y_resampled = sm.fit_resample(X, y_encoded)
+
+print("After balancing:")
+print(pd.Series(y_resampled).value_counts())
+
+
