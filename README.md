@@ -34,6 +34,7 @@ py 2_train_model.py
 Open your browser and go to `http://127.0.0.1:5000/`.
 
 ## 👥 Contributors
+* Rubiya Sultana (Data Exploration)
 * Faiaz & Tahmid (Data Modelling)
 * Seyeon (Model Scoring)
 * Van Nguyen (Deployment & Integration)
